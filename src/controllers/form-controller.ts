@@ -12,7 +12,7 @@ export class FormController {
     }
 
     private addItem(input: HTMLInputElement) {
-        if(input.value.trim().length === 0)
+        if(input.value.trim().length === 0) 
             return;
 
         this.model.addItem(input.value);
