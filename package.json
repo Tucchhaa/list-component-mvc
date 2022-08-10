@@ -2,19 +2,14 @@
   "name": "list-component-mvc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build": "tsc --build",
-    "watch": "tsc --watch "
+    "watch": "tsc --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tucchhaa/list-component-mvc.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Tucchhaa/list-component-mvc/issues"
-  },
-  "homepage": "https://github.com/Tucchhaa/list-component-mvc#readme"
+  "author": "Eldar Iusupzhanov",
+  "license": "ISC"
 }
