@@ -8,7 +8,6 @@ export type ClassNames = {
     list: string;
 
     inputsWrapper: string;
-    inputs: string;
 
     item: string;
     itemWrapper: string,
