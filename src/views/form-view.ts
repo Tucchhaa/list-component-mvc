@@ -28,10 +28,8 @@ export class FormView extends BaseView {
     private renderInputs() {
         const addItemInput = this.renderInput(this.options.inputs.addItem, "add-item-btn-clicked");
         const filterItemInput = this.renderInput(this.options.inputs.filterItems, "filter-items-btn-clicked");
-
-        const wrapper =  this.createContainer(this.classNames.inputs, [addItemInput, filterItemInput]);
         
-        return this.createContainer(this.classNames.inputWrapper, [wrapper]);
+        return this.createContainer(this.classNames.inputsWrapper, [addItemInput, filterItemInput]);
     }
 
     private renderInput(inputOptions: InputOptions, btnClickedEvent: string) {

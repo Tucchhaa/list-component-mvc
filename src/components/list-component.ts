@@ -6,6 +6,7 @@ import { ListModel } from "../models/list-model";
 import { ListView } from "../views/list-view";
 import { FormView } from "../views/form-view";
 import { FormController } from "../controllers/form-controller";
+import { SelectionListView } from "../views/selection-list-view";
 
 export class ListComponent {
     model: ListModel;
@@ -13,37 +14,42 @@ export class ListComponent {
 
     constructor(list: Item[], container: HTMLElement, options?: ListComponentOptions) {
         const _options = { ...defaultOptions, ...options };
-
-        // create HTML container for Views 
-        const formContainer = document.createElement("div");
-        formContainer.className = _options.classNames.inputsWrapper;
-        
-        const listContainer = document.createElement("div");
-        
-        container.append(formContainer, listContainer);
-        // ===
-
+ 
         this.model = new ListModel(list);
         this.options = _options;
 
         // ===
+        const formContainer = <HTMLElement|null>container.querySelector(".form");
+        
+        const listContainer = <HTMLElement|null>document.querySelector(".list");
+
+        const selectionListContainer = <HTMLElement|null>document.querySelector(".selection-list");
+        // ===
+
         this.createForm(formContainer);
         this.createList(listContainer);
+        this.createSelectionList(selectionListContainer);
     }
 
-    private createForm(container: HTMLElement) {
-        const view = new FormView(this.model, container, this.options);
+    private createForm(container: HTMLElement | null) {
+        if(container) {
+            const view = new FormView(this.model, container, this.options);
 
-        const controller = new FormController(this.model, view);
+            const controller = new FormController(this.model, view);
+        }
     }
 
-    private createList(container: HTMLElement) {
-        const view = new ListView(this.model, container, this.options);
+    private createList(container: HTMLElement | null) {
+        if(container) {
+            const view = new ListView(this.model, container, this.options);
         
-        const controller = new ListController(this.model, view);
+            const controller = new ListController(this.model, view);
+        }
     }
 
-    private createSelectedList(container: HTMLElement) {
-
+    private createSelectionList(container: HTMLElement | null) {
+        if(container) {
+            const view = new SelectionListView(this.model, container, this.options);
+        }
     }
 }
