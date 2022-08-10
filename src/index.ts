@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
         { id: 4, content: "Paris" },
         { id: 5, content: "New Deli" },
     ];
-    лабуда
+    
     const container = document.getElementById("container");
 
     new ListComponent(list, container!);
