@@ -1,6 +1,6 @@
-import { Item } from "../../types";
-import { ListModel } from "./list-model";
-import { ListView } from "./list-view";
+import { Item } from "../types";
+import { ListModel } from "../models/list-model";
+import { ListView } from "../views/list-view";
 
 export class ListController {
     model: ListModel;

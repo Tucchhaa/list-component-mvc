@@ -6,7 +6,10 @@ export const defaultOptions: ListComponentOptions = {
     classNames: {
         list: listClassName,
 
-        item: listClassName+"-item row",
+        inputsWrapper: "row",
+        inputs: "col-8",
+
+        item: listClassName + "-item row",
         itemWrapper: "row",
         itemCheckbox: "checkbox",
         itemContent: "content",
@@ -32,6 +35,18 @@ export const defaultOptions: ListComponentOptions = {
         editBtn: "edit",
         saveBtn: "save",
         cancelBtn: "cancel"
-    }
+    },
 
+    inputs: {
+        addItem: {
+            name: "item-content",
+            placeholder: "Add item",
+            buttonContent: "Add"
+        },
+        filterItems: {
+            name: "item-content",
+            placeholder: "Filter items",
+            buttonContent: "Filter"
+        }
+    },
 };

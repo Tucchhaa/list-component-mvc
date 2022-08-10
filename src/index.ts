@@ -1,4 +1,4 @@
-import { ListComponent } from "./components/list/list-component";
+import { ListComponent } from "./components/list-component";
 import { Item } from "./types";
 
 window.addEventListener("load", () => {

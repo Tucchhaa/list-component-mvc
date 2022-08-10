@@ -1,6 +1,6 @@
-import { EventEmitter } from "../../event-emitter";
+import { EventEmitter } from "../event-emitter";
 
-import { Item, Id } from "../../types";
+import { Item, Id } from "../types";
 
 export class ListModel extends EventEmitter {
     private list: Item[];
@@ -11,7 +11,15 @@ export class ListModel extends EventEmitter {
         this.list = list;
     }
 
-    public addItem(item: Item) {
+    public getItems() {
+        return this.list.slice();
+    }
+
+    public addItem(content: string) {
+        const id = this.list[this.list.length-1]?.id + 1 || 1;
+
+        const item = { id, content };
+
         this.list.push(item);
 
         this.emit("item-added", item);
@@ -27,10 +35,6 @@ export class ListModel extends EventEmitter {
         }
     }
 
-    public getList() {
-        return this.list.slice();
-    }
-
     public editItem(edited: Item) {
         let item = this.list.filter(item => item.id === edited.id);
         
@@ -39,5 +43,13 @@ export class ListModel extends EventEmitter {
             
             this.emit("item-edited", item);
         }
+    }
+    
+    public filterItems(filter: string) {
+        for(const item of this.list) {
+            item.filtered = item.content.indexOf(filter) !== -1;
+        }
+
+        this.emit("list-filtered");
     }
 }

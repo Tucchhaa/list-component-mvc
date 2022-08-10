@@ -1,5 +1,14 @@
+export type InputOptions = {
+    name: string,
+    placeholder: string,
+    buttonContent: string
+}
+
 export type ClassNames = {
     list: string;
+
+    inputsWrapper: string;
+    inputs: string;
 
     item: string;
     itemWrapper: string,
@@ -24,6 +33,11 @@ export type ClassNames = {
 
 export type ListComponentOptions = {
     classNames: ClassNames,
+    
+    inputs: {
+        addItem: InputOptions,
+        filterItems: InputOptions
+    },
 
     contents: {
         deleteBtn: string,
@@ -33,12 +47,13 @@ export type ListComponentOptions = {
     }
 }
 
-export type Id = number | string;
+export type Id = number;
 
 export type Item = {
     id: Id;
     content: string;
 
+    filtered?: boolean;
     editing?: boolean;
     selected?: boolean;
 

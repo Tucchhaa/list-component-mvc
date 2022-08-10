@@ -1,12 +1,11 @@
-import { ClassNames, Item, ListComponentOptions } from "../../types";
+import { ClassNames, Item, ListComponentOptions } from "../types";
 
-import { BaseView } from "../base-view";
+import { BaseView } from "./base-view";
 
-import { ListModel } from "./list-model";
+import { ListModel } from "../models/list-model";
 
 export class ListView extends BaseView {
     model: ListModel;
-    container: HTMLElement;
     options: ListComponentOptions;
 
     classNames: ClassNames;
@@ -14,48 +13,43 @@ export class ListView extends BaseView {
     list: Item[];
 
     constructor(model: ListModel, container: HTMLElement, options: ListComponentOptions) {
-        super();
+        super(container);
         
         this.model = model; 
 
-        this.container = container;
-        
         this.list = [];
 
         this.options = options;
         this.classNames = options.classNames;
 
         // model listeners
-        model.onMany(["item-added", "item-deleted", "item-edited"], () => this.render());
+        model.onMany(["item-added", "item-deleted", "item-edited", "list-filtered"], () => this.render());
         
         //
         this.render();
     }
 
-    public render() {
-        this.list = this.model.getList();
+    public display(fragment: DocumentFragment): void {
+        this.list = this.model.getItems();
 
-        this.container.innerHTML = "";
-
-        const fragment = document.createDocumentFragment();
-        
         const list = this.renderList();
 
         fragment.appendChild(list);
-
-        this.container.appendChild(fragment);
     }
 
     private renderList() {
         const listNode = this.createDOMNode("ul", this.classNames.list);
 
         for(const item of this.list) {
+            if(item.filtered === false)
+                continue;
+
             const itemNode = this.renderItem(item);
             
             listNode.appendChild(itemNode);
         }
 
-        return this.createContainer("", [listNode]);
+        return listNode;
     }
 
     // Item rendering
