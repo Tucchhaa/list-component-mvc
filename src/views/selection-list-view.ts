@@ -33,7 +33,7 @@ export class SelectionListView extends BaseView {
 
         fragment.appendChild(selectionList);
     }
-
+    фывыфвл
     private renderSelectionList() {
         const selectedList = this.createDOMNode("ul", "list-group");
         
