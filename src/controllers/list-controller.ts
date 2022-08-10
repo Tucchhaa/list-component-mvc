@@ -29,8 +29,7 @@ export class ListController {
     }
 
     private openEditingInput(item: Item) {
-        item.editing = true;
-        this.model.editItem(item);
+        this.model.editItem({ ...item, editing: true });
     }
 
     private deleteItem(item: Item) {
@@ -38,14 +37,16 @@ export class ListController {
     }
 
     private saveItem(item: Item) {
-        item.content = item.input!.value;
-        item.editing = false;
-        
-        this.model.editItem(item);
+        const editedItem = {
+            ...item,
+            content: item.input!.value,
+            editing: false
+        }
+
+        this.model.editItem(editedItem);
     }
 
     private cancelEditing(item: Item) {
-        item.editing = false;
-        this.model.editItem(item);
+        this.model.editItem({ ...item, editing: false });
     }
 }

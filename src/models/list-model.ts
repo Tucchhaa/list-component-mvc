@@ -36,12 +36,16 @@ export class ListModel extends EventEmitter {
     }
 
     public editItem(edited: Item) {
-        let item = this.list.filter(item => item.id === edited.id);
-        
-        if(item) {
-            item = { ...item, ...edited };
-            
-            this.emit("item-edited", item);
+        for(let i=0; i < this.list.length; i++) {
+            let item = this.list[i];
+
+            if(item.id === edited.id) {
+                this.list[i] = { ...item, ...edited };
+                
+                this.emit("item-edited", item);
+
+                return;
+            }
         }
     }
     
