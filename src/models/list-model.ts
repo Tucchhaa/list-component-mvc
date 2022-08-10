@@ -54,6 +54,6 @@ export class ListModel extends EventEmitter {
             item.filtered = item.content.indexOf(filter) !== -1;
         }
 
-        this.emit("list-filtered");
+        //this.emit("list-filtered");
     }
 }
