@@ -1,13 +1,23 @@
-import { EventEmitter } from "../event-emitter";
+import { EventEmitter, IEventEmitter } from "../event-emitter";
 
 import { Item, Id } from "../types";
 
-export class ListModel extends EventEmitter {
+export interface IListModel extends IEventEmitter {
+    getItems(): Item[];
+    addItem(content: string): void;
+    deleteItem(id: Id): void;
+    editItem(edited: Item): void;
+    filterItems(filter: string): void;
+}
+
+// ===
+
+export class ListModel extends EventEmitter implements IListModel {
     private list: Item[];
     
     constructor(list: Item[]) {
         super();
-
+        
         this.list = list;
     }
 
