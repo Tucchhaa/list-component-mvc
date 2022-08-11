@@ -5,12 +5,12 @@ import { BaseView } from "./base-view";
 import { IListModel } from "../models/list-model";
 
 export class ListView extends BaseView {
-    model: IListModel;
-    options: ListComponentOptions;
+    private model: IListModel;
+    private options: ListComponentOptions;
 
-    classNames: ClassNames;
+    private classNames: ClassNames;
     
-    list: Item[];
+    private list: Item[];
 
     constructor(model: IListModel, container: HTMLElement, options: ListComponentOptions) {
         super(container);

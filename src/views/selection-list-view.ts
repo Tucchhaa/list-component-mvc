@@ -3,12 +3,12 @@ import { ClassNames, Item, ListComponentOptions } from "../types";
 import { BaseView } from "./base-view";
 
 export class SelectionListView extends BaseView {
-    model: IListModel;
-    options: ListComponentOptions;
+    private model: IListModel;
+    private options: ListComponentOptions;
     
-    classNames: ClassNames;
+    private classNames: ClassNames;
 
-    list: Item[];
+    private list: Item[];
 
     constructor(model: IListModel, container: HTMLElement, options: ListComponentOptions) {
         super(container);

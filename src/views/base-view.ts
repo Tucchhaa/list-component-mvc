@@ -6,7 +6,7 @@ export interface IView extends IEventEmitter {
 }
 
 export abstract class BaseView extends EventEmitter implements IView {
-    container: HTMLElement;
+    protected container: HTMLElement;
     
     constructor(container: HTMLElement) {
         super();

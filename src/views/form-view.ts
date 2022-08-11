@@ -3,10 +3,10 @@ import { ClassNames, InputOptions, ListComponentOptions } from "../types";
 import { BaseView } from "./base-view";
 
 export class FormView extends BaseView {
-    model: IListModel;
-    options: ListComponentOptions;
+    private model: IListModel;
+    private options: ListComponentOptions;
     
-    classNames: ClassNames;
+    private classNames: ClassNames;
 
     constructor(model: IListModel, container: HTMLElement, options: ListComponentOptions) {
         super(container);

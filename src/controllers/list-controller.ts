@@ -3,7 +3,7 @@ import { IListModel } from "../models/list-model";
 import { IView } from "../views/base-view";
 
 export class ListController {
-    model: IListModel;
+    private model: IListModel;
     
     constructor(model: IListModel, view: IView) {
         this.model = model; 
