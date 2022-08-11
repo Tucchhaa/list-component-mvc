@@ -2,8 +2,18 @@ interface IDictionary<TValue> {
     [id: string]: TValue;
 }
 
-export class EventEmitter {
-    events: IDictionary<CallableFunction[]>;
+export interface IEventEmitter {
+    on(event: string, listener: CallableFunction): IEventEmitter;
+
+    onMany(events: string[], listener: CallableFunction): IEventEmitter;
+
+    emit(event: string, param?: object): void;
+}
+
+// ===
+
+export class EventEmitter implements IEventEmitter {
+    private events: IDictionary<CallableFunction[]>;
     
     constructor() {
         this.events = {};
@@ -31,7 +41,7 @@ export class EventEmitter {
         return this;
     }
 
-    protected emit(event: string, param?: object) {
+    public emit(event: string, param?: object) {
         for(const listener of (this.events[event] || [])) {
             listener(param);
         }

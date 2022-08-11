@@ -1,11 +1,11 @@
 import { Item } from "../types";
-import { ListModel } from "../models/list-model";
-import { ListView } from "../views/list-view";
+import { IListModel } from "../models/list-model";
+import { IView } from "../views/base-view";
 
 export class ListController {
-    model: ListModel;
+    model: IListModel;
     
-    constructor(model: ListModel, view: ListView) {
+    constructor(model: IListModel, view: IView) {
         this.model = model; 
 
         view.on("item-clicked", ({item, event}: { item: Item, event: MouseEvent }) => this.selectItem(item, event));

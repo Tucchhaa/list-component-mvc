@@ -1,14 +1,14 @@
-import { ListModel } from "../models/list-model";
+import { IListModel } from "../models/list-model";
 import { ClassNames, InputOptions, ListComponentOptions } from "../types";
 import { BaseView } from "./base-view";
 
 export class FormView extends BaseView {
-    model: ListModel;
+    model: IListModel;
     options: ListComponentOptions;
     
     classNames: ClassNames;
 
-    constructor(model: ListModel, container: HTMLElement, options: ListComponentOptions) {
+    constructor(model: IListModel, container: HTMLElement, options: ListComponentOptions) {
         super(container);
 
         this.model = model;

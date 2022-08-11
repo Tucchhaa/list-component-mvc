@@ -2,20 +2,20 @@ import { defaultOptions } from "../constants";
 import { Item, ListComponentOptions } from "../types";
 
 import { ListController } from "../controllers/list-controller";
-import { ListModel } from "../models/list-model";
+import { IListModel, ListModel } from "../models/list-model";
 import { ListView } from "../views/list-view";
 import { FormView } from "../views/form-view";
 import { FormController } from "../controllers/form-controller";
 import { SelectionListView } from "../views/selection-list-view";
 
 export class ListComponent {
-    model: ListModel;
+    model: IListModel;
     options: ListComponentOptions;
 
     constructor(list: Item[], container: HTMLElement, options?: ListComponentOptions) {
         const _options = { ...defaultOptions, ...options };
  
-        this.model = new ListModel(list);
+        this.model = <IListModel>new ListModel(list);
         this.options = _options;
 
         // ===

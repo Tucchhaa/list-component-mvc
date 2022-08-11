@@ -1,7 +1,11 @@
-import { EventEmitter } from "../event-emitter";
+import { EventEmitter, IEventEmitter } from "../event-emitter";
 import { TagNames } from "../types";
 
-export abstract class BaseView extends EventEmitter {
+export interface IView extends IEventEmitter {
+    display(fragment: DocumentFragment): void;
+}
+
+export abstract class BaseView extends EventEmitter implements IView {
     container: HTMLElement;
     
     constructor(container: HTMLElement) {

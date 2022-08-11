@@ -1,10 +1,10 @@
-import { ListModel } from "../models/list-model";
-import { FormView } from "../views/form-view";
+import { IListModel } from "../models/list-model";
+import { IView } from "../views/base-view";
 
 export class FormController {
-    model: ListModel;
+    model: IListModel;
     
-    constructor(model: ListModel, view: FormView) {
+    constructor(model: IListModel, view: IView) {
         this.model = model; 
 
         view.on("add-item-btn-clicked", (input: HTMLInputElement) => this.addItem(input));
