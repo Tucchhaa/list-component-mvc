@@ -7,7 +7,7 @@ export interface IEventEmitter {
 
     onMany(events: string[], listener: CallableFunction): IEventEmitter;
 
-    emit(event: string, param?: object): void;
+    emit(event: string, param?: any): void;
 }
 
 // ===
@@ -41,7 +41,7 @@ export class EventEmitter implements IEventEmitter {
         return this;
     }
 
-    public emit(event: string, param?: object) {
+    public emit(event: string, param?: any) {
         for(const listener of (this.events[event] || [])) {
             listener(param);
         }

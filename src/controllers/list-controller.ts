@@ -8,7 +8,7 @@ export class ListController {
     constructor(model: IListModel, view: IView) {
         this.model = model; 
 
-        view.on("item-clicked", ({item, event}: { item: Item, event: MouseEvent }) => this.selectItem(item, event));
+        view.on("item-clicked", (item: Item) => this.selectItem(item));
         
         view.on("edit-btn-clicked", (item: Item) => this.openEditingInput(item));
         view.on("delete-btn-clicked", (item: Item) => this.deleteItem(item));
@@ -17,12 +17,7 @@ export class ListController {
         view.on("cancel-btn-clicked", (item: Item) => this.cancelEditing(item));
     }
 
-    private selectItem(item: Item, event: MouseEvent) {
-        const targetTag = (event.target as HTMLElement).tagName;
-
-        if(targetTag === "BUTTON" || item.editing === true)
-            return;
-
+    private selectItem(item: Item) {
         item.selected = !(item.selected);
 
         this.model.editItem(item);

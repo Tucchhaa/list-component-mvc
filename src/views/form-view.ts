@@ -26,13 +26,22 @@ export class FormView extends BaseView {
     }
 
     private renderInputs() {
-        const addItemInput = this.renderInput(this.options.inputs.addItem, "add-item-btn-clicked");
-        const filterItemInput = this.renderInput(this.options.inputs.filterItems, "filter-items-btn-clicked");
+        const addItemInput = this.renderInput(this.options.inputs.addItem, 
+            (input: HTMLInputElement) => {
+                this.emit("add-item-btn-clicked", input.value);
+                input.value = "";
+            }
+        );
+
+        const filterItemInput = this.renderInput(this.options.inputs.filterItems, 
+            (input: HTMLInputElement) =>
+                this.emit("filter-items-btn-clicked", input.value)
+        );
         
         return this.createContainer(this.classNames.inputsWrapper, [addItemInput, filterItemInput]);
     }
 
-    private renderInput(inputOptions: InputOptions, btnClickedEvent: string) {
+    private renderInput(inputOptions: InputOptions, onSubmit: CallableFunction) {
         const { classNames } = this;
 
         // Render input
@@ -47,7 +56,7 @@ export class FormView extends BaseView {
 
         const buttonContainer = this.createContainer(classNames.submitButtonContainer, [button]);
         
-        button.addEventListener("click", () => this.emit(btnClickedEvent, input));
+        button.addEventListener("click", () => onSubmit(input));
 
         return this.createContainer(classNames.inputWrapper, [inputContainer, buttonContainer]);
     }
