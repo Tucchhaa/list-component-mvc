@@ -1,10 +1,10 @@
-export type InputOptions = {
+export interface InputOptions {
     name: string,
     placeholder: string,
     buttonContent: string
 }
 
-export type ClassNames = {
+export interface ClassNames {
     list: string;
 
     inputsWrapper: string;
@@ -30,7 +30,7 @@ export type ClassNames = {
     submitButton: string
 }
 
-export type ListComponentOptions = {
+export interface ListComponentOptions {
     classNames: ClassNames,
     
     inputs: {
@@ -46,9 +46,7 @@ export type ListComponentOptions = {
     }
 }
 
-export type Id = number;
-
-export type Item = {
+export interface Item {
     id: Id;
     content: string;
 
@@ -58,5 +56,7 @@ export type Item = {
 
     input?: HTMLInputElement
 }
+
+export type Id = number;
 
 export type TagNames = "ul" | "div" | "li" | "input" | "button" | "span";

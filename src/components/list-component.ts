@@ -20,7 +20,7 @@ export class ListComponent {
 
         // ===
         const formContainer = <HTMLElement|null>container.querySelector(".form");
-        
+
         const listContainer = <HTMLElement|null>document.querySelector(".list");
 
         const selectionListContainer = <HTMLElement|null>document.querySelector(".selection-list");
@@ -42,7 +42,7 @@ export class ListComponent {
     private createList(container: HTMLElement | null) {
         if(container) {
             const view = new ListView(this.model, container, this.options);
-        
+
             const controller = new ListController(this.model, view);
         }
     }

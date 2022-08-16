@@ -5,12 +5,12 @@ import { BaseView } from "./base-view";
 import { IListModel } from "../models/list-model";
 
 export class ListView extends BaseView {
-    model: IListModel;
-    options: ListComponentOptions;
+    private model: IListModel;
+    private options: ListComponentOptions;
 
-    classNames: ClassNames;
+    private classNames: ClassNames;
     
-    list: Item[];
+    private list: Item[];
 
     constructor(model: IListModel, container: HTMLElement, options: ListComponentOptions) {
         super(container);
@@ -79,7 +79,14 @@ export class ListView extends BaseView {
 
         itemNode.appendChild(container);
         
-        itemNode.addEventListener("click", event => this.emit("item-clicked", { item, event }));
+        itemNode.addEventListener("click", event => {
+            const targetTag = (event.target as HTMLElement).tagName;
+
+            if(targetTag === "BUTTON" || item.editing === true)
+                return;
+
+            this.emit("item-clicked", item);
+        });
         
         return itemNode;
     }
