@@ -4,7 +4,6 @@ import { FormController } from "../src/controllers/form-controller";
 import { Item } from "../src/types";
 import { IView } from "../src/views/base-view";
 
-
 class MockModel implements IListModel {
     public addedItems: string[] = [];
     public filters: string[] = [];
@@ -78,10 +77,6 @@ describe("without jest", () => {
 // ===
 
 describe("with jest", () => {
-    // const mockSubscribeEvent = jest.fn(view.on);
-    // const mockAddItem = jest.fn((content: string) => model.addItem(content));
-    // const mockFilterItems = jest.fn((filter: string) => model.filterItems(filter));
-    
 
     test("subscribing controller listeners to view", () => {
         const spy = jest.spyOn(view, "on");
