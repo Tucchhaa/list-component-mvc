@@ -1,5 +1,7 @@
 import { ListModel } from "../src/models/list-model";
 
+declare var test: jest.It;
+
 const list = [{ id: 0, content: 'a' }, { id: 1, content: 'b' }];
 
 let model: ListModel;

@@ -4,5 +4,11 @@ module.exports = {
     port2: 1338,
     
     browsers: "chrome",
-    src: "./testcafe"
+    src: "./testcafe",
+
+    compilerOptions: {
+        typescript: {
+            configPath: "tsconfig.testcafe.json"
+        }
+    }
 }
