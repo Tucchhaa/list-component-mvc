@@ -4,7 +4,8 @@ module.exports = {
     port2: 1338,
     
     browsers: "chrome",
-    src: "./testcafe",
+    src: ["./testcafe", "!./testcafe/test.ts"],
+    speed: 0.5,
 
     compilerOptions: {
         typescript: {

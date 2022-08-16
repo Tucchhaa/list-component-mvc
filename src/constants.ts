@@ -6,7 +6,7 @@ export const defaultOptions: ListComponentOptions = {
     classNames: {
         list: listClassName,
 
-        inputsWrapper: "col-8",
+        inputsWrapper: "col-8 input-wrapper",
 
         item: listClassName + "-item row",
         itemWrapper: "row",
