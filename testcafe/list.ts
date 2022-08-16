@@ -1,8 +1,9 @@
+import path from "path";
 import { ClientFunction, Selector } from 'testcafe';
 import { ListComponent } from './POM/list-component';
 
 fixture`Getting Started`
-    .page`file:///E:/DevExtreme/list-component-mvc/testcafe/test.html`;
+    .page`file://${path.join(__dirname, "./test.html")}`;
 
 //
 
