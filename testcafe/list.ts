@@ -1,4 +1,4 @@
-import path from "path";
+import * as path from "path";
 import { ClientFunction, Selector } from 'testcafe';
 import { ListComponent } from './POM/list-component';
 
