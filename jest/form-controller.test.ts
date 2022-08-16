@@ -4,6 +4,8 @@ import { FormController } from "../src/controllers/form-controller";
 import { Item } from "../src/types";
 import { IView } from "../src/views/base-view";
 
+declare var test: jest.It;
+
 class MockModel implements IListModel {
     public addedItems: string[] = [];
     public filters: string[] = [];
