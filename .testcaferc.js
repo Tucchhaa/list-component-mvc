@@ -3,9 +3,9 @@ module.exports = {
     port1: 1337,
     port2: 1338,
     
-    browsers: "chrome",
+    browsers: "chrome:headless",
     src: ["./testcafe", "!./testcafe/test.ts"],
-    speed: 0.5,
+    speed: 1,
 
     compilerOptions: {
         typescript: {
